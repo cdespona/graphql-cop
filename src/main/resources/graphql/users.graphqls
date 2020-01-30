@@ -1,0 +1,36 @@
+type User {
+    id: ID!
+    name: String!
+    first_name: String
+    email: String!
+    address: Address
+    phone: Phone
+}
+
+extend type Query {
+    findAllUsers: [User]!
+    countUsers: Long!
+}
+
+input PhoneInput {
+    phone: String!
+    country_code: String
+}
+
+input AddressInput {
+    address: String!
+    zp: String
+    city: String
+    country: String
+}
+
+extend type Mutation {
+    createUser(name: String!, first_name: String, email: String!, address: AddressInput, phone: PhoneInput): User!
+    updateUser(id: ID!, name: String, first_name: String, email: String, address: AddressInput, phone: PhoneInput): User!
+    deleteUser(id: ID!): Boolean
+}
+
+schema {
+   query: Query
+   mutation: Mutation
+}

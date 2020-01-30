@@ -1,0 +1,18 @@
+type Address {
+    id: ID!
+    address: String!
+    zp: String
+    city: String
+    country: String
+}
+
+type Query {
+    findAllAddresses: [Address]!
+    countAddresses: Long!
+}
+
+type Mutation {
+    createAddress(address: String!, zp: String, city: String, country: String): Address!
+    updateAddress(id: ID!, address: String!, zp: String, city: String, country: String): Address!
+    deleteAddress(id: ID!): Boolean
+}

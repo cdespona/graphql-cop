@@ -1,0 +1,16 @@
+type Phone {
+    id: ID!
+    phone: String!
+    country_code: String
+}
+
+extend type Query {
+    findAllPhones: [Phone]!
+    countPhones: Long!
+}
+
+extend type Mutation {
+    createPhone(phone: String!, country_code: String): Phone!
+    updatePhone(id: ID!, phone: String!, country_code: String): Phone!
+    deletePhone(id: ID!): Boolean
+}
